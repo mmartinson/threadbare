@@ -1,9 +1,18 @@
 defmodule Threadbare do
-  @moduledoc """
-  Threadbare keeps the contexts that define your domain
-  and business logic.
+  @moduledoc false
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  def connect(token) do
+    IO.inspect("connecting with token #{token}")
+    :ok
+  end
+
+  def user_from_auth(%{credentials: %{token: token}} = auth) do
+    IO.inspect(auth)
+    {:ok, token}
+  end
+
+  def user_from_auth(auth) do
+    IO.inspect(auth)
+    {:error, :no_token}
+  end
 end
